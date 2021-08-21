@@ -30,13 +30,13 @@ function Index({items}) {
       <div>
         <form onSubmit={addUrlHandle}>
           <Input
-
             focus 
             placeholder='Search...'
             name="addurl"
             value={stateAdd}
             style={{ width:"600px" }}
             onInput={e => setStateAdd(e.target.value)}
+            required
           />
           <Button 
             style={{marginLeft: "2rem"}}
