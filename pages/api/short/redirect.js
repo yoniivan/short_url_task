@@ -24,6 +24,8 @@ export default async (req, res) => {
 
         return res.redirect(url.originalUrl);
 
+    }else{
+        return res.json({message: "No such URI"});
     }
 }
 

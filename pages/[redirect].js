@@ -1,12 +1,13 @@
-
-import { useRouter } from 'next/router';
 import axios from 'axios';
+import settings from '../next.config';
+import { Header } from "semantic-ui-react";
+
 
 function Redirect({items}) {
     
     return (
-      <div>
-        soething
+      <div style={{margin: "10rem"}}>
+        <Header as='h1'>{items}</Header>
       </div>
   
     )
@@ -14,10 +15,12 @@ function Redirect({items}) {
   
   Redirect.getInitialProps = async (context) => {
     console.log(context.asPath);
-    const res = await axios.post(`http://localhost:3000/api/short/redirect`, {path: context.asPath})
-    const items = await res.data;
-    console.log(items);
-    return "items: items"
+    const res = await axios.post(`${settings.env.WEB_DOMIAN}/api/short/redirect`, {path: context.asPath})
+    console.log(res.data);
+    if(res.data.message === "No such URI"){
+      return {items: res.data.message}
+    }
+    return "Will not get here (:";
   }
   
   export default Redirect

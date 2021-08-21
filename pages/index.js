@@ -1,4 +1,4 @@
-
+import settings from '../next.config';
 import '../styles/Home.module.css';
 import axios from 'axios';
 import { Button, Table, Input } from "semantic-ui-react";
@@ -40,7 +40,7 @@ function Index({items}) {
           />
           <Button 
             style={{marginLeft: "2rem"}}
-            content='Click Here' 
+            content='Add URL' 
             type="submit"
           />
         </form>
@@ -57,7 +57,7 @@ function Index({items}) {
 }
 
 async function handlePost(payload){
-  const res = await axios.post(`http://localhost:3000/api/short`, {"originalUrl": payload});
+  const res = await axios.post(`${settings.env.WEB_DOMIAN}/api/short`, {"originalUrl": payload});
   console.log("handlePost");
   console.log(res.status);
   console.log(res.data);
@@ -70,7 +70,7 @@ async function handlePost(payload){
 } 
 
 Index.getInitialProps = async () => {
-  const res = await axios.get(`http://localhost:3000/api/short`)
+  const res = await axios.get(`${settings.env.WEB_DOMIAN}/api/short`)
   const items = await res.data.data;
   return { items: items }
 }
