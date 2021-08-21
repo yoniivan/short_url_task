@@ -1,0 +1,23 @@
+version: '3'
+services:
+
+  next-app:
+    build: .
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+    ports:
+      - "3000:3000"
+  
+  mongo:
+    image: mongo
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=yoniivan
+      - MONGO_INITDB_ROOT_PASSWORD=pico1288
+    volumes: 
+      - mongo-db:/data/db
+
+volumes: 
+  mongo-db:  

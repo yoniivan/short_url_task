@@ -1,0 +1,28 @@
+h1 {
+    text-align: center;
+}
+
+.wrapper{
+    max-width: 1200px;
+    padding: 0 16px;
+    margin: auto;
+}
+
+.navbar{
+    padding: 20px;
+    margin-bottom: 20px;
+    background: cornflowerblue;
+    color: cornsilk;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar .item{
+    color: cornsilk;
+    font-size: 1.5rem;
+}
+
+.navbar .navbar-brand{
+    color: cornsilk;
+    font-size: 2rem;
+}
